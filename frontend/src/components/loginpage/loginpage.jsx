@@ -17,7 +17,7 @@ const Loginpage = () => {
                 <p>Lipsum dolor sit,orem  amet consectetur adipisicing elit.Temporibus natus non quae delectus voluptas eaque ipsam aspernatur!</p>
                 <div className='contact-details'>
                     <div className='contact-detail'>
-                        <SiGmail /> <p>kartikneelgund028@gmail.com</p>
+                        <SiGmail /> <p>excelanalytics@gmail.com</p>
                     </div>
                     <div className='contact-detail'>
                         <FaPhone /><p>+91 1234567890</p>
