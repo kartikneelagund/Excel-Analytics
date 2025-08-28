@@ -1,11 +1,26 @@
-
-
-
+// src/utils/api.js
 import axios from "axios";
 
-// ✅ Base URL should point to API root, not a specific endpoint
+// Base URL: use environment variable if available, otherwise fallback to localhost
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  baseURL: API_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
+
+// Optional: Add a request interceptor to automatically attach JWT token
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token"); // JWT stored in localStorage
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 export default api;
