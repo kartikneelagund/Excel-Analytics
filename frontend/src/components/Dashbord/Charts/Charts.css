@@ -93,9 +93,9 @@
 
 .file-input {
   padding: 0.5rem 1rem;
-  border: 1px solid #888;
+  border: 1px solid #948989;
   border-radius: 4px;
-  background-color: #333;
+  background-color: #a18e8e;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -117,7 +117,7 @@
 
 .chart-controls select:hover {
   transform: scale(1.05);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(143, 126, 126, 0.1);
 }
 
 .download-controls {
