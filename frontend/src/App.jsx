@@ -1,3 +1,4 @@
+// App.jsx
 import './App.css';
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -15,19 +16,16 @@ import AI_Insights_page from './components/Dashbord/Main_pages/AI_Insights_page/
 import Help_page from './components/Dashbord/Main_pages/Help_page/Help_page';
 import Setting_page from './components/Dashbord/Main_pages/Setting_page/Setting_page';
 
-
-
-
 // Logout component
 function Logout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.removeItem("token");            // Clear login token
-    navigate("/login", { replace: true });       // Redirect and remove from history
+    localStorage.removeItem("token"); // Clear login token
+    navigate("/login", { replace: true }); // Redirect to login
   }, [navigate]);
 
-  return null; // No UI needed
+  return null;
 }
 
 // Protect private pages
@@ -41,7 +39,8 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/signup" exact element={
+      {/* Public Routes */}
+      <Route path="/signup" element={
         <>
           <Navbar />
           <Signup />
@@ -49,7 +48,7 @@ function App() {
         </>
       } />
       
-      <Route path="/login" exact element={
+      <Route path="/login" element={
         <>
           <Navbar />
           <Login />
@@ -57,7 +56,8 @@ function App() {
         </>
       } />
 
-      <Route path="/" exact element={
+      {/* Private Routes */}
+      <Route path="/" element={
         <PrivateRoute>
           <div className="app">
             <Sidebar />
@@ -66,7 +66,7 @@ function App() {
         </PrivateRoute>
       } />
 
-      <Route path="/users" exact element={
+      <Route path="/users" element={
         <PrivateRoute>
           <div className="app">
             <Sidebar />
@@ -75,7 +75,7 @@ function App() {
         </PrivateRoute>
       } />
 
-      <Route path="/charts" exact element={
+      <Route path="/charts" element={
         <PrivateRoute>
           <div className="app">
             <Sidebar />
@@ -84,7 +84,7 @@ function App() {
         </PrivateRoute>
       } />
 
-      <Route path="/ai-insights" exact element={
+      <Route path="/ai-insights" element={
         <PrivateRoute>
           <div className="app">
             <Sidebar />
@@ -93,7 +93,7 @@ function App() {
         </PrivateRoute>
       } />
 
-      <Route path="/help" exact element={
+      <Route path="/help" element={
         <PrivateRoute>
           <div className="app">
             <Sidebar />
@@ -102,7 +102,7 @@ function App() {
         </PrivateRoute>
       } />
 
-      <Route path="/settings" exact element={
+      <Route path="/settings" element={
         <PrivateRoute>
           <div className="app">
             <Sidebar />
@@ -111,10 +111,9 @@ function App() {
         </PrivateRoute>
       } />
 
-     
       <Route path="/logout" element={<Logout />} />
 
-     
+      {/* Catch-all route */}
       <Route path="*" element={<Navigate to={user ? "/" : "/login"} replace />} />
     </Routes>
   );
