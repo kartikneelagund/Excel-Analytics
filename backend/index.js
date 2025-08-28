@@ -32,3 +32,10 @@ const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+const allowedOrigins = ["http://localhost:5173","https://blog-new-frontend-five.vercel.app/"];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
