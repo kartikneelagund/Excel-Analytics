@@ -33,7 +33,7 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-const allowedOrigins = ["http://localhost:5173","https://blog-new-frontend-five.vercel.app/"];
+const allowedOrigins = ["http://localhost:5173","https://excel-analytics-frontend-neon.vercel.app/login"];
 
 app.use(cors({
   origin: allowedOrigins,
