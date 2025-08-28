@@ -7,10 +7,8 @@ import { SidebarProvider } from './components/Dashbord/context/sidebarContext.js
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <SidebarProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </SidebarProvider>
   </React.StrictMode>
 );
