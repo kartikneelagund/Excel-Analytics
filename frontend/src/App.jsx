@@ -39,15 +39,6 @@ function App() {
 
   return (
     <Routes>
-      {/* Landing Page (Login as default) */}
-      <Route path="/" element={
-        <>
-          <Navbar />
-          <Login />
-          <Footer />
-        </>
-      } />
-
       {/* Public Routes */}
       <Route path="/signup" element={
         <>
@@ -65,8 +56,8 @@ function App() {
         </>
       } />
 
-      {/* Private Routes (Dashboard & Others) */}
-      <Route path="/dashboard" element={
+      {/* Private Routes */}
+      <Route path="/" element={
         <PrivateRoute>
           <div className="app">
             <Sidebar />
@@ -123,7 +114,7 @@ function App() {
       <Route path="/logout" element={<Logout />} />
 
       {/* Catch-all route */}
-      <Route path="*" element={<Navigate to="/login" replace />} />
+      <Route path="*" element={<Navigate to={user ? "/" : "/login"} replace />} />
     </Routes>
   );
 }
