@@ -16,6 +16,24 @@ import AI_Insights_page from './components/Dashbord/Main_pages/AI_Insights_page/
 import Help_page from './components/Dashbord/Main_pages/Help_page/Help_page';
 import Setting_page from './components/Dashbord/Main_pages/Setting_page/Setting_page';
 
+// Landing page
+function LandingPage() {
+  return (
+    <div className="landing">
+      <Navbar />
+      <div className="landing-content" style={{ textAlign: "center", padding: "4rem" }}>
+        <h1>Welcome to Excel Analytics 📊</h1>
+        <p>Upload, analyze, and visualize your Excel data with ease.</p>
+        <div style={{ marginTop: "2rem" }}>
+          <a href="/login" className="btn">Login</a>
+          <a href="/signup" className="btn" style={{ marginLeft: "1rem" }}>Signup</a>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+}
+
 // Logout component
 function Logout() {
   const navigate = useNavigate();
@@ -40,6 +58,8 @@ function App() {
   return (
     <Routes>
       {/* Public Routes */}
+      <Route path="/" element={<LandingPage />} />
+      
       <Route path="/signup" element={
         <>
           <Navbar />
@@ -57,7 +77,7 @@ function App() {
       } />
 
       {/* Private Routes */}
-      <Route path="/" element={
+      <Route path="/dashboard" element={
         <PrivateRoute>
           <div className="app">
             <Sidebar />
@@ -114,7 +134,7 @@ function App() {
       <Route path="/logout" element={<Logout />} />
 
       {/* Catch-all route */}
-      <Route path="*" element={<Navigate to={user ? "/" : "/login"} replace />} />
+      <Route path="*" element={<Navigate to={user ? "/dashboard" : "/"} replace />} />
     </Routes>
   );
 }
